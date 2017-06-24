@@ -21,7 +21,7 @@ var app = new Vue({
       // right now it's false, that way I can check if the page is done loading
       feed: [],
       timer: '',
-		numNew: 1,
+		numNew: 2,
       ids: ['Georg.G.Raffelt.1', 'Huaiyu.Duan.1', 'G.M.Fuller.1', 'G.M.Fuller.2', 'A.Mirizzi.1', 'J.P.Kneller.1', 'B.Dasgupta.1', 'I.Tamborra.1', 'Meng.Ru.Wu.1', 'S.Shalgar.1', 'V.Cirigliano.1', 'M.W.Paris.1', 'C.T.Kishimoto.1', 'A.Friedland.1', 'H.Nagakura.1', 'H.T.Janka.1']
    },
 
