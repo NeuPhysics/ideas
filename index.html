@@ -100,7 +100,10 @@
                      </p>
                      <p v-show:false>
                         <strong>Summary:</strong>
-                        <span v-if="item.abstract[0]==undefined">
+                        <span v-if="item.abstract==null">
+                           NULL
+                        </span>
+                        <span v-else-if="item.abstract[0]==undefined">
                      {{item.abstract.summary}}
                      </span>
                         <span v-else>
@@ -149,7 +152,10 @@
                      </p>
                      <p v-show:false>
                         <strong>Summary:</strong>
-                        <span v-if="item.abstract[0]==undefined">
+                        <span v-if="item.abstract==null">
+                           NULL
+                        </span>
+                        <span v-else-if="item.abstract[0]==undefined">
                      {{item.abstract.summary}}
                   </span>
                         <span v-else>
