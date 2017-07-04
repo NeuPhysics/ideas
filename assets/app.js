@@ -54,7 +54,44 @@ var app = new Vue({
             });
          }, _this.ids[i]);
       }
+
+      setInterval(function () {
+        for (var i = 0; i < _this.ids.length; i++) {
+           var names = _this.ids[i];
+           this.feedPromise(function(result) {
+              result.flatMap(function(val) {
+                 return Rx.Observable.of(val.body);
+              }).subscribe(function(result) {
+                 console.log(' ');
+                 console.info('subscribing to results');
+                 console.log(i);
+                 console.log(names);
+                 _this.feed.push(
+                    result.slice(0, 3)
+                 );
+              }, function(err) {
+                 throw err;
+              }, function() {
+                 console.log(' ');
+                 console.log('DONE!');
+                 console.log(' ');
+                 console.log('This is what you got..');
+                 console.log(' ');
+              });
+           }, _this.ids[i]);
+        }
+      }.bind(this), 3600000);
+
+
    },
+
+   ready: function () {
+    this.mounted();
+
+    setInterval(function () {
+      this.mounted();
+    }.bind(this), 3);
+  },
 
    methods: {
       feedPromise: function feedPromise(cb, id) {
@@ -75,6 +112,8 @@ var app = new Vue({
          return "http://inspirehep.net/record/" + id;
       }
    },
+
+
    computed: {
       newPapers: function() {
          var feedFlat = [].concat.apply([], this.feed);
